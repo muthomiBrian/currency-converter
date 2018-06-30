@@ -36,6 +36,7 @@ var myChart = new Chart(ctx, {
         }
     }
 });
+// SW - service worker
 
 // Store
 const createStore = (reducer) => {
@@ -62,6 +63,24 @@ const store = createStore(reducer);
 console.log(store)
 
 // Reducer
+const initialState = {
+    type: 'INITIALIZATION',
+    sourceInput: null,
+    sourceCurrency: 'USD',
+    destinationInput: null,
+    destinationCurrency: 'KES',
+    conversionQuery: 'USD_KES',
+    conversionRate: null,
+    pastConversions: [],
+    historicalRate: [],
+    notificationSourceInput: null,
+    notificationSourceCurrency: 'USD',
+    notificationDestinationInput: null,
+    notificationDestinationCurrency: 'KES',
+    currencyNotifications:[]
+    
+
+}
 function reducer(state = {}, action) {
   switch (action.type){
     default:
