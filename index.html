@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/lux.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div id="conversionPhrase">
+            <div class="card border-0">
+                <div class="card-body ">
+                    <p>I want to convert</p>
+                    <div class="inputGroup">
+                        <div>
+                            <input type="text" name="sourceInput" id="sourceInput" placeholder="amount">
+                        </div>
+                        <div>
+                            <p class="small">to convert</p>
+                        </div>
+                    </div>
+                     <p> in </p>
+                     <select name="sourceCurrency" id="sourceCurrency">
+                         <option value="USD" selected>USD</option>
+                     </select>
+                     <p> to </p>
+                     <div class="inputGroup">
+                         <div>
+                             <input type="text" name="destinationInput" id="destinationInput" placeholder="amount">
+                         </div>
+                         <div>
+                            <p class="small">Converted</p>
+                         </div>
+                     </div>
+                     <select name="destinationCurrency" id="destinationCurrency">
+                         <option value="KES" selected>KES</option>
+                     </select>
+                     <p> in KSH.</p>
+                    <p class="blockquote-footer">Converted as of date</p>
+                </div>
+            </div> 
+        </div>
+        <div id="pastConversion">
+            <div class="card border-0 ml-0">
+                <div class="card-body">
+                    <h6 class="card-header bg-white border-0">Past conversions</h3>
+                    <div id="pastConversionContainer">
+                        <div class="pastCOnversionItem card border-0">
+                            <div class="card-body">
+                                <h6 class="card-header bg-white border-0">USD 100</h6>
+                                <p>Converted to 10,000 on March 15, 2017.</p>
+                            </div>
+                        </div>
+                        <div class="pastConversionItem card border-0">
+                            <div class="card-body">
+                                <h6 class="card-header bg-white border-0">USD 100</h6>
+                                <p>Converted to 10,000 on March 15, 2017.</p>
+                            </div>
+                        </div>
+                        <div class="pastCOnversionItem card border-0">
+                            <div class="card-body">
+                                <h6 class="card-header bg-white border-0">USD 100</h6>
+                                <p>Converted to 10,000 on March 15, 2017.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="doSomethingElse">
+            <div class="card border-0">
+                <div class="card-body">
+                    <div id="chart">
+                        <canvas id="8day-history" width="400" height="400"></canvas>
+                    </div>
+                    <div id="notificationPhrase">
+                        <p>I want to know when 1 USD reaches 100.5 KES</p>
+                        <p class="blockquote-footer">We will need you to be online to get updated rates</p>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        <div id="navigation">
+            <div class="card border-0">
+                <div class="card-body">
+                    <div class="border-top pt-4 pb-2">
+                        <a href="#">Switch currencies</a>
+                        <a href="#">Past conversions</a>
+                        <a href="#">I want to do something else</a>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">Currency converter</span>
+            <span id='onlineSwitch' class="float-right text-success">Online</span>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script> 
+    <script src="js/main.js"></script>
+</body>
+</html>
