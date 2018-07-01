@@ -90,7 +90,7 @@ const createStore = (reducer) => {
   };
 
   dispatch({});
-  return { getState, dispatch, subscribe }
+  return { getState, dispatch, subscribe };
 };
 const store = createStore(reducer);
 
@@ -161,7 +161,6 @@ const sourceCurrency = document.getElementById('sourceCurrency');
 const destinationInput = document.getElementById('destinationInput');
 const destinationCurrency = document.getElementById('destinationCurrency');
 const dateOfConversion = document.getElementById('dateOfConversion');
-const pastConversionContainer = document.getElementById('pastConversionContainer');
 
 // Other variables
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -181,7 +180,6 @@ function render(){
   const day = state.conversionDate.getDate() || '';
   const month = state.conversionDate.getMonth() || '';
   const date = `${months[month]}, ${day} ${year}` || 'date undefined';
-  console.log(state);
   sourceInput.value = state.sourceInput;
   sourceInput.style.minWidth = '6rem';
   sourceInput.style.width = `${state.sourceInput.toString().length}rem`;
@@ -256,7 +254,7 @@ function getStoredRates (queryString, actionType){
     const rateStore = tx.objectStore('rates');
     const queryIndex = rateStore.index('query');
     return queryIndex.get(queryString).then((rate) => {
-      if (!rate) return console.log('We currently don\'t have the rate for this transaction offline. Please try it online first');
+      if (!rate) return;
       const result = {[queryString]: {val: rate.val}};
       switch (actionType) {
       case 'ENTER_SOURCE_AMOUNT':
@@ -291,7 +289,7 @@ window.addEventListener('load', () => {
   api
     .getCurrencies()
     .catch(error => {
-      if ( !error.toString().includes('Failed to fetch')) return console.log(error);
+      if ( !error.toString().includes('Failed to fetch')) return;
       getStoredCurrencies();
       return;
     })
@@ -313,7 +311,7 @@ document.getElementById('sourceInput')
       api
         .getConversionRate(query(sourceCurrency.value,destinationCurrency.value))
         .catch((error) => {
-          if ( !error.toString().includes('Failed to fetch')) return console.log(error);
+          if ( !error.toString().includes('Failed to fetch')) return;
           getStoredRates(queryString,'ENTER_SOURCE_AMOUNT');
           return;
         })
@@ -363,7 +361,7 @@ document.getElementById('destinationInput')
       api
         .getConversionRate(query(sourceCurrency.value,destinationCurrency.value,true))
         .catch((error) => {
-          if ( !error.toString().includes('Failed to fetch')) return console.log(error);
+          if ( !error.toString().includes('Failed to fetch')) return;
           getStoredRates(queryString,'ENTER_DESTINATION_AMOUNT');
           return;
         })
