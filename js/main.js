@@ -330,21 +330,19 @@ destinationInput.addEventListener('click', () => {
 document.getElementById('sourceCurrency')
   .addEventListener('change', () => {
     const queryString = query(sourceCurrency.value,destinationCurrency.value);
-    if (sourceInput.value) {
-      api
-        .getConversionRate(query(sourceCurrency.value,destinationCurrency.value))
-        .then((result) => {
-          store.dispatch({
-            type: 'CHANGE_SOURCE_CURRENCY',
-            payload: {
-              sourceCurrency: sourceCurrency.value,
-              destinationInput: conversion(result, sourceInput.value, queryString).toFixed(2).toLocaleString(),
-              conversionRate: result[queryString].val,
-              conversionDate: new Date()
-            }
-          });
+    api
+      .getConversionRate(query(sourceCurrency.value,destinationCurrency.value))
+      .then((result) => {
+        store.dispatch({
+          type: 'CHANGE_SOURCE_CURRENCY',
+          payload: {
+            sourceCurrency: sourceCurrency.value || '',
+            destinationInput: conversion(result, sourceInput.value, queryString).toFixed(2).toLocaleString() || '',
+            conversionRate: result[queryString].val,
+            conversionDate: new Date()
+          }
         });
-    }
+      });
   });
 document.getElementById('destinationInput')
   .addEventListener('keyup', () => {
@@ -375,21 +373,19 @@ document.getElementById('destinationInput')
 document.getElementById('destinationCurrency')
   .addEventListener('change', () => {
     const queryString = query(sourceCurrency.value,destinationCurrency.value);
-    if (sourceInput.value) {
-      api
-        .getConversionRate(query(sourceCurrency.value,destinationCurrency.value))
-        .then((result) => {
-          store.dispatch({
-            type: 'CHANGE_DESTINATION_CURRENCY',
-            payload: {
-              destinationCurrency: destinationCurrency.value,
-              destinationInput: conversion(result, sourceInput.value, queryString).toFixed(2).toLocaleString('en-US'),
-              conversionRate: result[queryString].val,
-              conversionDate: new Date()
-            }
-          });
+    api
+      .getConversionRate(query(sourceCurrency.value,destinationCurrency.value))
+      .then((result) => {
+        store.dispatch({
+          type: 'CHANGE_DESTINATION_CURRENCY',
+          payload: {
+            destinationCurrency: destinationCurrency.value || '',
+            destinationInput: conversion(result, sourceInput.value, queryString).toFixed(2).toLocaleString('en-US') || '',
+            conversionRate: result[queryString].val,
+            conversionDate: new Date()
+          }
         });
-    }
+      });
   });
 
 
