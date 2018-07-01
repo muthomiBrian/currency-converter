@@ -11,7 +11,6 @@ class API {
     return fetch(this.API_URL+`convert?q=${query}&compact=y`)
       .then(res => res.json());
   }
-  getHistorical8dayRates(){}
 }
 
 
@@ -71,19 +70,6 @@ function updateReady(worker) {
 }
 // API
 const api = new API();
-// Chart js
-function chart8dayHistory(history, query) {
-  const dataArray = [];
-  const keys = Object.keys(history[query]);
-  keys.forEach((key) => {
-    const historicalRate = history[query][key];
-    return dataArray.push({
-      x: key,
-      y: historicalRate
-    });
-  });
-  return dataArray;
-}
 
 // Store
 const createStore = (reducer) => {
@@ -151,18 +137,10 @@ function reducer(state = {
     newState.conversionRate = action.payload.conversionRate;
     newState.conversionDate = action.payload.conversionDate;
     return newState;
-  case 'SELECT_PAST_CONVERSION':
-    return newState;
-  case 'CHANGE_NOTIFICATION_SOURCE_AMOUNT':
-    return newState;
   case 'CURRENCY_LIST_FETCHED':
     newState.type = action.type;
     newState.currencyList = action.payload.currencyList;
     newState.conversionDate = action.payload.conversionDate;
-    return newState;
-  case 'SAVE_CONVERSION':
-    return newState;
-  case 'SAVE_NOTIFICATION':
     return newState;
   default:
     return state;

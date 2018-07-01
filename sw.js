@@ -7,11 +7,11 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(staticCacheName).then(function(cache) {
       return cache.addAll([
-        '/',
-        'js/main.js',
-        'js/idb.js',
-        'css/lux.css',
-        'style.css',
+        'https://muthomibrian.github.io/currency-converter/',
+        'https://muthomibrian.github.io/currency-converter/js/main.js',
+        'https://muthomibrian.github.io/currency-converter/js/idb.js',
+        'https://muthomibrian.github.io/currency-converter/css/lux.css',
+        'https://muthomibrian.github.io/currency-converter/style.css',
       ]);
     })
   );
