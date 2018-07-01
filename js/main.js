@@ -51,10 +51,24 @@ function registerServiceWorker() {
     if (!navigator.serviceWorker.controller) {
       return;
     }  
+    if (reg.waiting) {
+      updateReady(reg.waiting);
+      return;
+    }
   });
 }
 registerServiceWorker();
-
+function updateReady(worker) {
+  const updatePending = document.getElementById('updatePending');
+  updatePending.classList.remove('d-none');
+  updatePending.classList.add('d-inline');
+  updatePending.classList.add('text-success');
+  updatePending.addEventListener('click', () => {
+    worker.postMessage({skip:true});
+    updatePending.classList.remove('d-inline');
+    updatePending.classList.add('d-none');
+  });
+}
 // API
 const api = new API();
 // Chart js
@@ -399,6 +413,8 @@ document.getElementById('destinationCurrency')
         });
     }
   });
+
+
 // Online check
 const onlineStatus = document.getElementById('onlineStatus');
 if (navigator.onLine) {
