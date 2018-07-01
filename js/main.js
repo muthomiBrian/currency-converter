@@ -47,7 +47,7 @@ function openCurrenciesDatabase(){
 // SW - service worker
 function registerServiceWorker() {
   if (!navigator.serviceWorker) return;
-  navigator.serviceWorker.register('/sw.js').then((reg) => {
+  navigator.serviceWorker.register('https://muthomibrian.github.io/currency-converter/sw.js').then((reg) => {
     if (!navigator.serviceWorker.controller) {
       return;
     }  
