@@ -15,6 +15,9 @@
             <div class="card border-0 mt-5">
                 <div class="card-body form-inline conversionPhrase pb-0">
                     <p>I want to convert</p>
+                    <select name="sourceCurrency" id="sourceCurrency">
+                        <option value="USD" selected>USD - United States Dollars</option>
+                    </select>
                     <div class="inputGroup">
                         <div>
                             <input type="text" name="sourceInput" id="sourceInput" placeholder="amount">
@@ -23,141 +26,28 @@
                             <p class="small">to convert</p>
                         </div>
                     </div>
-                     <select name="sourceCurrency" id="sourceCurrency">
-                         <option value="USD" selected>USD - United States Dollars</option>
-                     </select>
-                     <p>United&nbsp;</p> 
-                     <p>States&nbsp;</p> 
-                     <p>Dollars&nbsp;</p>
-                     <p> to</p>
-                     <div class="inputGroup">
-                         <div>
-                             <input type="text" name="destinationInput" id="destinationInput" placeholder="amount">
-                         </div>
-                         <div>
+                    <p> to</p>
+                    <select name="destinationCurrency" id="destinationCurrency">
+                        <option value="KES" selected>KES</option>
+                    </select>
+                    <div class="inputGroup">
+                        <div>
+                            <input type="text" name="destinationInput" id="destinationInput" placeholder="amount">
+                        </div>
+                        <div>
                             <p class="small">converted</p>
-                         </div>
-                     </div>
-                     <select name="destinationCurrency" id="destinationCurrency">
-                         <option value="KES" selected>KES</option>
-                     </select>
-                     <p>Kenyan</p> 
-                     <p>&nbsp;Shillings.</p>
+                        </div>
+                    </div>
+                    
                 </div>
                 <div id="conversionDate" class="card border-0">
                     <div class="card-body pt-0">
-                        <p class="blockquote-footer">Converted as of date</p>
+                        <p class="blockquote-footer">Converted as of <span id="dateOfConversion">date</span></p>
                     </div>
                 </div>
             </div> 
         </div>
-        <div id="pastConversions" class="mt-3 pt-3">
-            <div class="card border-0">
-                <div class="card-body pl-0">
-                    <h4 class="card-header bg-white border-0">Past conversions</h4>
-                    <div id="pastConversionContainer">
-                        <div class="pastConversionItem card border-0">
-                            <div class="card-body">
-                                <h6 class="card-header bg-white border-0">USD 100</h6>
-                                <p>Converted to 10,000 on March 15, 2017.</p>
-                            </div>
-                        </div>
-                        <div class="pastConversionItem card border-0">
-                            <div class="card-body">
-                                <h6 class="card-header bg-white border-0">USD 100</h6>
-                                <p>Converted to 10,000 on March 15, 2017.</p>
-                            </div>
-                        </div>
-                        <div class="pastConversionItem card border-0">
-                            <div class="card-body">
-                                <h6 class="card-header bg-white border-0">USD 100</h6>
-                                <p>Converted to 10,000 on March 15, 2017.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="small blockquote-footer pl-4 mt-2">Click and scroll on list for more past conversions, click on heading to redo conversion</p>
-                </div>
-            </div>
-        </div>
-        <div id="doSomethingElse">
-            <div class="card border-0">
-                <div class="card-body mt-4">
-                    <div id="chart" class="mx-auto">
-                        <canvas id="8day-history" ></canvas>
-                    </div>
-                    <div id="notificationPhrase" class="form-inline notificationPhrase mx-auto mt-4">
-                        <p>I want to know when</p>
-                        <div class="inputGroup">
-                            <div>
-                                <input type="text" name="watchInput" id="watchInput" placeholder="amount">
-                            </div>
-                            <div>
-                                <p class="small text-center">to watch</p>
-                            </div>
-                        </div>
-                        <select name="watchCurrency" id="watchCurrency">
-                            <option value="USD" selected>USD - United States Dollars</option>
-                        </select>
-                        <p>reaches</p>
-                        <div class="inputGroup">
-                            <div>
-                                <input type="text" name="targetInput" id="targetInput" placeholder="amount">
-                            </div>
-                            <div>
-                                <p class="small text-center">target</p>
-                            </div>
-                        </div>
-                        <select name="targetCurrency" id="targetCurrency">
-                            <option value="KES" selected>KES</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="card border-0">
-                <div class="card-body">
-                    <p class="blockquote-footer">We will need you to be online for regular checks</p>
-                </div>
-            </div>
-        </div>
-        <div id="setNotifications">
-            <div class="card border-0 ml-0">
-                <div class="card-body ">
-                    <h6 class="card-header bg-white border-0">Your notifications</h3>
-                    <div id="notificationContainer">
-                        <div class="notificationItem card border-0">
-                            <div class="card-body pl-0">
-                                <p>I want to know when 1 USD reaches 100.5 KES</p>
-                            </div>
-                        </div>
-                        <div class="notificationItem card border-0">
-                            <div class="card-body pl-0">
-                                <p>I want to know when 1 USD reaches 100.5 KES</p>
-                            </div>
-                        </div>
-                        <div class="notificationItem card border-0">
-                            <div class="card-body pl-0">
-                                <p>I want to know when 1 USD reaches 100.5 KES</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
-    <nav class="fixed-bottom mb-5 container">
-        <div id="navigation">
-            <div class="card border-0">
-                <div class="card-body pl-0 pr-0">
-                    <div class="border-top pt-4 pb-3">
-                        <a href="#">Switch currencies</a>
-                        <a href="#pastConversions">Past conversions</a>
-                        <a href="#doSomethingElse">I want to do something else</a>
-                        <a href="#setNotifications">Notifications</a>
-                    </div>  
-                </div>
-            </div>
-        </div>
-    </nav>
     <footer class="footer fixed-bottom pt-3 pb-3 bg-white">
         <div class="container">
             <span class="text-muted">Currency converter</span>
@@ -165,6 +55,7 @@
         </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script> 
+    <script src="js/idb.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
