@@ -1,0 +1,22 @@
+{
+  "name": "currency-converter",
+  "version": "1.0.0",
+  "description": "Currency converter front end application with offline capability. Built for the Google Africa Scholarship Challenge.",
+  "main": "none",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muthomiBrian/currency-converter.git"
+  },
+  "author": "Brian Muthomi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/muthomiBrian/currency-converter/issues"
+  },
+  "homepage": "https://github.com/muthomiBrian/currency-converter#readme",
+  "devDependencies": {
+    "eslint": "^5.0.1"
+  }
+}

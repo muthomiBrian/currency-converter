@@ -1,54 +1,63 @@
 // Chart js
-var ctx = document.getElementById("8day-history").getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
+function chart8dayHistory(history, query) {
+  const dataArray = [];
+  const keys = Object.keys(history[query]);
+  keys.forEach((key) => {
+    const historicalRate = history[query][key];
+    return dataArray.push({
+      x: key,
+      y: historicalRate
+    });
+  });
+  return dataArray;
+}
+const ctx = document.getElementById('8day-history').getContext('2d');
+const myChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    label: ['USD_KES'],
+    datasets: [{
+      data: [12, 19, 3, 5, 2, 3],
+      backgroundColor: [
+        'rgba(33, 33, 33, 0.2)',
+      ],
+      borderColor: [
+        'rgba(133,133,132,1)',
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    legend: {
+      display: false,
     },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
+    scales: {
+      yAxes: false
     }
+  }
 });
 // SW - service worker
+function registerServiceWorker() {
+  if (!navigator.serviceWorker) return;
+  navigator.serviceWorker.register('/sw.js').then((reg) => {
+    if (!navigator.serviceWorker.controller) {
+      return;
+    }  
+  });
+}
+registerServiceWorker();
 
 // Store
 const createStore = (reducer) => {
   let state;
-  let listeners = []
+  let listeners = [];
 
   const getState = () => state;
 
   const dispatch = (action) => {
     state = reducer(state, action);
     listeners.forEach(listener => listener());
-  }
+  };
   const subscribe = (listener) => {
     listeners.push(listener);
     return () => {
@@ -56,37 +65,44 @@ const createStore = (reducer) => {
     };
   };
 
-  dispatch({})
+  dispatch({});
   return { getState, dispatch, subscribe }
-}
+};
 const store = createStore(reducer);
-console.log(store)
-
 // Reducer
-const initialState = {
-    type: 'INITIALIZATION',
-    sourceInput: null,
-    sourceCurrency: 'USD',
-    destinationInput: null,
-    destinationCurrency: 'KES',
-    conversionQuery: 'USD_KES',
-    conversionRate: null,
-    pastConversions: [],
-    historicalRate: [],
-    notificationSourceInput: null,
-    notificationSourceCurrency: 'USD',
-    notificationDestinationInput: null,
-    notificationDestinationCurrency: 'KES',
-    currencyNotifications:[]
-    
-
-}
-function reducer(state = {}, action) {
+function reducer(state = {
+  type: 'INITIALIZATION',
+  sourceInput: null,
+  sourceCurrency: 'USD',
+  destinationInput: null,
+  destinationCurrency: 'KES',
+  conversionQuery: 'USD_KES',
+  conversionRate: null,
+  pastConversions: [],
+  historicalRates: [],
+  notificationSourceInput: null,
+  notificationSourceCurrency: 'USD',
+  notificationDestinationInput: null,
+  notificationDestinationCurrency: 'KES',
+  currencyNotifications:[],
+  online: true
+}, action) {
   switch (action.type){
-    default:
-    return state
+  default:
+    return state;
   }
 }
-// Actions
 
+
+// Actions
+//TODO: Implement application actions.
 // idb
+//TODO: Implement the index db for the application
+// Online check
+const onlineStatus = document.getElementById('onlineStatus');
+if (navigator.onLine) {
+  onlineStatus.innerHTML = 'Online';
+  onlineStatus.classList.add('text-success');
+} else {
+  onlineStatus.innerHTML = 'Offline';
+}

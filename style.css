@@ -10,3 +10,141 @@ a {
 .border-top {
     border-top: 1px solid #1a1a1a !important;
 }
+.inputGroup {
+    height: 3.2rem;
+}
+input {
+    width:6rem;
+    border-top: none;
+    border-right: none;
+    border-left:none;
+    border-bottom: 2px solid #1a1a1a;
+    text-align: center;
+}
+.conversionPhrase, .notificationPhrase {
+    font-size: 1.4rem;
+}
+.conversionPhrase .small {
+    font-size: .6rem;
+    text-align: center;
+}
+select {
+    width: 4.5rem;
+    margin-top: -.9rem;
+    height: 2.3rem;
+    border-top: none;
+    border-right: none;
+    border-left:none;
+    border-bottom: 2px solid #1a1a1a;
+}
+h6 {
+    padding-left:0 !important;
+    font-size: 1rem;
+}
+.pastConversionItem .card-body {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.notificationItem .card-body {
+    padding-top: 1rem;
+    padding-bottom: 0;
+}
+#pastConversionContainer, #notificationContainer {
+    height: 300px;
+    overflow-y: scroll;
+}
+#doSomethingElse {
+    margin-top: 5rem;
+}
+#setNotifications {
+    margin-top: 2rem;
+    margin-bottom: 15rem;
+}
+#chart {
+    max-width: 400px;
+}
+@media (min-width: 375px) {
+    #conversionPhrase {
+        margin-top: 5rem;
+    }
+    #pastConversions h4 {
+        margin-top: 1rem;
+    }
+}
+@media (min-width: 425px) {
+    #conversionPhrase {
+        margin-top: 11rem;
+        margin-bottom: 5rem;
+    }
+    #conversionDate {
+        margin-top: 1rem;
+    }
+    #pastConversions h4 {
+        margin-top: 3rem;
+    }
+}
+@media (min-width: 768px) {
+    #conversionPhrase {
+        margin-top: 23rem;
+        margin-bottom: 11rem;
+    }
+    #pastConversions h4 {
+        margin-top: 12rem;
+    }
+    #pastConversions p.small {
+        margin-bottom: 12rem;
+    }
+}
+
+@media (min-width: 1024px) and ( min-height: 600px) {
+    #conversionPhrase {
+        margin-top: 8rem;
+        margin-bottom: 5rem;
+    }
+    #pastConversions h4 {
+        margin-top: 2rem;
+    }
+    #pastConversions p.small {
+        margin-bottom: 12rem;
+    }
+    #pastConversionContainer, #notificationContainer {
+        height: 200px;
+        overflow-y: scroll;
+    }
+}
+
+@media (min-width: 1366px) {
+    #conversionPhrase {
+        margin-top: 14rem;
+        margin-bottom: 7rem;
+    }
+    #pastConversions h4 {
+        margin-top: 4rem;
+    }
+    #pastConversions p.small {
+        margin-bottom: 2rem;
+    }
+    #pastConversionContainer, #notificationContainer {
+        height: 200px;
+        overflow-y: scroll;
+    }
+}
+
+@media (min-width: 1440px) and ( min-height: 900px) {
+    #conversionPhrase {
+        margin-top: 19rem;
+        margin-bottom: 15rem;
+    }
+    #pastConversions h4 {
+        margin-top: 4rem;
+    }
+    #pastConversions p.small {
+        margin-bottom: 24rem;
+    }
+    #pastConversionContainer, #notificationContainer {
+        height: 200px;
+        overflow-y: scroll;
+    }
+}
+
+
